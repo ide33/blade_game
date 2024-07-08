@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class AttackController : MonoBehaviour
 {
-    public float attackRange = 1f; // 攻撃の範囲
-    public LayerMask enemyLayer; // 敵のレイヤー
+    public Transform attackPoint; // 攻撃の発生地点
+    public float attackRange = 0.5f; // 攻撃の範囲
+    public LayerMask enemyLayers; // 攻撃が当たる敵のレイヤー
+    public int attackDamage = 10; // 攻撃力
 
     void Update()
     {
-        // プレイヤーが攻撃ボタンを押したとき
-        if (Input.GetKeyDown(KeyCode.J))
+        // スペースキーが押されたときに攻撃を実行
+        if (Input.GetKeyDown(KeyCode.K))
         {
             Attack();
         }
@@ -18,20 +20,21 @@ public class AttackController : MonoBehaviour
 
     void Attack()
     {
-        // 攻撃範囲内の敵を検出
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, attackRange, enemyLayer);
+        // 攻撃の範囲内にいる敵を検出
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
 
-        // 検出した敵を消滅させる
+        // 検出された敵にダメージを与える
         foreach (Collider2D enemy in hitEnemies)
         {
-            Destroy(enemy.gameObject);
+            enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
         }
     }
 
-    // ギズモを表示して攻撃範囲を可視化
     void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
+        if (attackPoint == null)
+            return;
+
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 }
