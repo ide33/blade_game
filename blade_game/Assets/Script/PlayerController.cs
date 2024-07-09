@@ -6,19 +6,30 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-     public float jumpForce = 10f; // ジャンプの強さ
+    public float jumpForce = 10f; // ジャンプの強さ
     private int jumpCount = 0; // ジャンプの回数
     private bool isGrounded = false; // 地面にいるかどうか
     private Rigidbody2D rb;
     //プレイヤーの速度
     public float speed = 5f;
+    public Vector2 respawnPosition;
+    private SpriteRenderer spriteRenderer;
+    // public float flap = 500f;
+    // public float scroll = 5f;
+    // float direction = 0f;
+    Rigidbody2D rb2d;
+    private Transform stratPosition;
+    private Rigidbody2D rb2D;  //オブジェクト・コンポーネント参照
 
-     void Start()
+    void Start()
     {
+        rb2d = GetComponent<Rigidbody2D>();   //コンポーネント参照取得
         rb = GetComponent<Rigidbody2D>();
+
+         rb2D = GetComponent<Rigidbody2D>();
+        stratPosition = gameObject.transform;
     }
 
-    //Update is called once per frame
     void Update()
     {
         //右に進む移動
@@ -31,6 +42,10 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse); // ジャンプの力を加える
             jumpCount++;
         }
+
+        // Vector2 posi = this.transform.position;
+        // Debug.Log("x = -7" + posi.x);
+        // Debug.Log("y = -2.6" + posi.y);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -51,4 +66,22 @@ public class PlayerController : MonoBehaviour
             isGrounded = false;
         }
     }
+
+    // トリガーが他のColliderと接触した際に呼ばれる
+   private void OnTriggerEnter2D(Collider2D other)
+{
+    if (other.gameObject.CompareTag("River"))
+    {
+        Respawn();
+    }
+}
+
+void Respawn()
+{
+    Vector2 startPosition = new Vector2(-10f, -3.3f);
+    transform.position = startPosition;
+
+    GameObject manager = GameObject.Find("GameManager");
+    manager.GetComponent<GameManager>().DecreaseHP();
+}
 }

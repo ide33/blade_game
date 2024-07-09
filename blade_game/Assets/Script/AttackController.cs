@@ -5,7 +5,7 @@ using UnityEngine;
 public class AttackController : MonoBehaviour
 {
     public Transform attackPoint; // 攻撃の発生地点
-    public float attackRange = 0.5f; // 攻撃の範囲
+    public float attackRange = 1.0f; // 攻撃の範囲
     public LayerMask enemyLayers; // 攻撃が当たる敵のレイヤー
     public int attackDamage = 10; // 攻撃力
 

@@ -1,27 +1,28 @@
-// using System.Collections;
-// using System.Collections.Generic;
-// using UnityEngine;
-// using UnityEngine.UI;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
-// public class GameManager : MonoBehaviour
-// {
-//     public void OnGoal()
-//     {
-//         Debug.Log("ゴール");
-//     }
-//     GameObject hpGauge;
-//     void Start()
-//     {
-//         this.hpGauge = GameObject.Find("hpGauge");
-//     }
+public class GameManager : MonoBehaviour
+{
+    GameObject hpGauge;
+    void Start()
+    {
+        this.hpGauge = GameObject.Find("hpGauge");
+    }
 
-//        void Update()
-//     {
-        
-//     }
+       void Update()
+    {
+        // HPゲージがなくなったらゲームオーバー画面に移行
+        if (hpGauge.GetComponent<Image>().fillAmount <= 0)
+        {
+            SceneManager.LoadScene("GameOverScene");
+        }
+    }
 
-//     public void DecreaseHP()
-//     {
-//         this.hpGauge.GetComponent<Image>().fillAmount -= 0.1f;
-//     }
-// }
+    public void DecreaseHP()
+    {
+        this.hpGauge.GetComponent<Image>().fillAmount -= 0.4f;
+    }
+}
