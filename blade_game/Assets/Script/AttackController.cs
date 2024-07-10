@@ -21,12 +21,26 @@ public class AttackController : MonoBehaviour
     void Attack()
     {
         // 攻撃の範囲内にいる敵を検出
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, 1.0f);
 
         // 検出された敵にダメージを与える
         foreach (Collider2D enemy in hitEnemies)
         {
-            enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
+            if (enemy.CompareTag("Enemy"))
+            {
+                Enemy enemyHealth = enemy.GetComponent<Enemy>();
+                if (enemyHealth != null)
+                {
+                    enemyHealth.TakeDamage(attackDamage);
+
+                    // 攻撃判定を相殺する処理
+                    EnemyAttack enemyAttack = enemy.GetComponent<EnemyAttack>();
+                    if (enemyAttack != null && enemyAttack.IsAttacking)
+                    {
+                        enemyAttack.CancelAttack();
+                    }
+                }
+            }
         }
     }
 
@@ -34,7 +48,8 @@ public class AttackController : MonoBehaviour
     {
         if (attackPoint == null)
             return;
-
+            
+        Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 }
