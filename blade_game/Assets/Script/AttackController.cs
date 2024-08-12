@@ -11,7 +11,7 @@ public class AttackController : MonoBehaviour
 
     void Update()
     {
-        // スペースキーが押されたときに攻撃を実行
+        // Kキーが押されたときに攻撃を実行
         if (Input.GetKeyDown(KeyCode.K))
         {
             Attack();
