@@ -8,16 +8,13 @@ public class PlayerController : MonoBehaviour
 {
     public float jumpForce = 10f; // ジャンプの強さ
     private int jumpCount = 0; // ジャンプの回数
-    private bool isGrounded = false; // 地面にいるかどうか
     private Rigidbody2D rb;
     public float speed = 5f; // プレイヤーの速度
-    private SpriteRenderer spriteRenderer;
 
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>(); // spriteRendererの初期化
         jumpCount = 0; // jumpCountの初期化
     }
 
@@ -41,16 +38,6 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             jumpCount = 0;
-            isGrounded = true;
-        }
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        // 地面から離れたら地面にいないことを設定
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            isGrounded = false;
         }
     }
 }
