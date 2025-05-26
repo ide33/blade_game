@@ -32,26 +32,26 @@ namespace Part20250526_2
                     Value = value;
                 }
             }
-            private class Box
-            {
-                public int Value { get; }
-                public Box(int value)
-                {
-                    Value = value;
-                }
-            }
+            // private class Box
+            // {
+            //     public int Value { get; }
+            //     public Box(int value)
+            //     {
+            //         Value = value;
+            //     }
+            // }
             
             /** Boxのインスタンス作成 */
-            private Box CreateBox(int value)
+            private Box<T> CreateBox<T>(T value)
             {
                 // TODO : Box<T> に対応したジェネリック関数へ変更する
-                return new Box(value);
+                return new Box<T>(value);
             }
             
-            private Box CreateBox(string value)
-            {
-                return null;
-            }
+            // private Box CreateBox(string value)
+            // {
+            //     return null;
+            // }
 
             private bool IsValid(out string message)
             {
@@ -60,8 +60,8 @@ namespace Part20250526_2
                 
                 var intBoxValue = intBox.Value;
                 // TODO : stringBox.Value を取得する
-                // var stringBoxValue = stringBox.Value;
-                string stringBoxValue = "";
+                var stringBoxValue = stringBox.Value;
+                // string stringBoxValue = "";
                 
                 message = $"intBox: {intBoxValue}, stringBox: {stringBoxValue}";
                 return intBox.Value == 10 && stringBoxValue == "Hello";
@@ -104,7 +104,7 @@ namespace Part20250526_2
             
             /** パーティー情報クラス */
             // TODO : ジェネリッククラス Party<TUnit> に型制約を追加
-            private class PartyInfo<T>
+            private class PartyInfo<T> where T : Ally
             {
                 private readonly List<T> _allies = new List<T>();
                 
@@ -118,7 +118,7 @@ namespace Part20250526_2
                 public int GetLevelSum()
                 {
                     // TODO : 編成ユニット のレベルを合計する処理を実装
-                    return 0;
+                    return _allies.Sum(ally => ally.Level);
                 }
             }
             

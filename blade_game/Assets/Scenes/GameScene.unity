@@ -2976,8 +2976,9 @@ GameObject:
   - component: {fileID: 1643215262}
   - component: {fileID: 1643215263}
   - component: {fileID: 1643215264}
+  - component: {fileID: 1643215265}
   m_Layer: 0
-  m_Name: Ploblem
+  m_Name: Problem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3065,9 +3066,21 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1643215257}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8da08d24626024b42b65206962c1c88d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1643215265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1643215257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1a9c7bd2e3eea44386a42ef56895ded, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1655814167
