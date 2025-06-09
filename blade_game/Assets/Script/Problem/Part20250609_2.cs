@@ -85,7 +85,7 @@ namespace Part20250609
 
                 // TODO 下段にある IntExtensions クラスの IsEnough メソッドを拡張メソッドに書き換える
                 // TODO 拡張メソッドを使った所持金チェックに書き換える => money.IsEnough(requireMoney)
-                var enough = ItemExtensions.IsEnough(money, requireMoney);
+                var enough = money.IsEnough(requireMoney);
 
                 // IntExtensions.IsEnoughが拡張メソッドか判定
                 var isExtension = typeof(ItemExtensions).GetMethod("IsEnough")?.IsDefined(typeof(System.Runtime.CompilerServices.ExtensionAttribute), false) ?? false;
@@ -105,10 +105,10 @@ namespace Part20250609
     public static class ItemExtensions
     {
         // TODO メソッド IsEnough を拡張メソッドに再定義する
-        public static bool IsEnough(Part20250609_2.Question2.Item target, Part20250609_2.Question2.Item require)
+        public static bool IsEnough(this Part20250609_2.Question2.Item target, Part20250609_2.Question2.Item require)
         {
             // TODO ロジック実装
-            return false;
+            return target.Value >= require.Value;
         }
     }
 
