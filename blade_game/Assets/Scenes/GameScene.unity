@@ -2971,6 +2971,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1643215259}
   - component: {fileID: 1643215260}
+  - component: {fileID: 1643215261}
   m_Layer: 0
   m_Name: Problem
   m_TagString: Untagged
@@ -3000,9 +3001,21 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1643215257}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b69bbf198c9414940bd71b02cc052592, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1643215261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1643215257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c42e1719b33870c4e809e415f9cb18da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1655814167
