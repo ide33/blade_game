@@ -3000,9 +3000,9 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1643215257}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6b57ab5236062243b92067e8f578cfd, type: 3}
+  m_Script: {fileID: 11500000, guid: 0683400fae1719349847206ee409367e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1655814167
@@ -3978,8 +3978,12 @@ PrefabInstance:
       value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 7936296762364292739, guid: 826a37a66cfcc0043a20fa686088b148, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 25.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7936296762364292739, guid: 826a37a66cfcc0043a20fa686088b148, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.52
+      value: 1.8972
       objectReference: {fileID: 0}
     - target: {fileID: 7936296762364292739, guid: 826a37a66cfcc0043a20fa686088b148, type: 3}
       propertyPath: m_LocalPosition.y
