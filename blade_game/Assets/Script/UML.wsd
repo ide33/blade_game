@@ -1,3 +1,71 @@
 @startuml 'https://plantuml.com/class-diagram
-AttackController <-- Enemy
+package Player {
+
+    class PlayerController {
+        + Move()
+        + Jump()
+    }
+
+    class AttackController {
+        + Attack()
+    }
+
+    class PlayerHealth {
+        + TakeDamage()
+        + GameOver()
+    }
+
+    class PlayerRespawn {
+        + Respawn()
+    }
+
+    PlayerController --> PlayerHealth
+    PlayerRespawn *-- PlayerHealth
+    AttackController --> Enemy.Enemy
+    AttackController --> Enemy.EnemyAttack
+}
+
+package Enemy {
+
+    class Enemy {
+        + TakeDamage()
+        + Die()
+    }
+
+    class EnemyAttack {
+        + OnTriggerEnter2D()
+        + CancelAttack()
+    }
+
+    EnemyAttack --> Player.PlayerHealth
+}
+
+package System {
+
+    class CameraManager {
+        + FollowTarget()
+    }
+
+    class GoalController {
+        + OnTriggerEnter2D()
+    }
+
+    class StartController {
+        + StartGame()
+    }
+
+    class GameOverController {
+        + GameOver()
+    }
+
+    class GameClearController {
+        + ClearGame()
+    }
+
+    CameraManager --> Player.PlayerController
+    GoalController --> "SceneManager"
+    StartController --> "SceneManager"
+    GameOverController --> "SceneManager"
+    GameClearController --> "SceneManager"
+}
 @enduml
